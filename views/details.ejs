@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+     <%- include('./partials/head.ejs')  %> 
+  <body>
+    <%- include('./partials/nav.ejs') %>
+    <div class="details content">
+     <h2><%= blog.title %></h2>
+     <div class="content">
+          <p><%= blog.body%></p>
+     </div>
+     <a href="" class="delete" data-doc="<%= blog.id %>">delete</a>
+     <!-- to delete  a speceifc blog  using blog id -->
+    </div>
+  </body>
+  <%- include('./partials/footer.ejs')  %> 
+  <script>
+    const trashcan=document.querySelector('a.delete');
+    trashcan.addEventListener('click',(e)=>{
+    const endpoint=`/blogs/${trashcan.datset.doc}`
+    })
+    //ajax req
+    fetch(endpoint,{
+      method:'DELETE'
+    })
+    .then((response)=>response.json())//RETURN JSON DTA
+    
+    .then((data)=>console.log(data))//jspn data that comes back to us return another promise that will pass thus json datat into an actual js object that we can use 
+    .catch(err=>console.log(err))
+  </script>
+</html>
+
+
