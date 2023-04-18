@@ -47,14 +47,13 @@ app.get("/", (req, res) => {
 //It will handle all the redirected and request that are comming from path /blogs
 app.get("/blogs", (req, res) => {
   Blog.find()
-    .sort({ createdAt: -1 }) //sort acc to newest to oldest
+    .sort({ createdAt: -1 }) //Sort Blogs by Last Added to First Added
     .then((result) => {
       res.render("index", { title: "All Blogs", blogs: result });
     })
     .catch((err) => {
       console.log(err);
     });
-  // res.render("index", { title: "All Blogs", blogs: result });
 });
 
 // Handles all requests that comes from path /about
@@ -80,22 +79,19 @@ app.post("/blogs", (req, res) => {
 app.get("/blogs/:id", (req, res) => {
   const id = req.params.id;
   Blog.findById(id).then((result) => {
-    res.render("details", { blog: result, title: "blog details" }).catch((err) => {
+    res.render("details", { blog: result, title: "Blog details" });
+    //it is a ajax req so we can;t do that in redirect we have to send json or text data sned some json data back to the browser json have a redirect property url whwere you want to redirect that is done on frontend you cant do it in server it is a jaxreq
+  });
+});
+app.delete("/blogs/:id", (req, res) => {
+  const id = req.params.id;
+  Blog.findByIdAndDelete(id)
+    .then(() => {
+      res.json({ redirect: "/blogs" });
+    })
+    .catch((err) => {
       console.log(err);
     });
-    //it is a ajax req so we can;t do that in redirect we have to send json or text data sned some json data back to the browser json have a redirect property url whwere you want to redirect that is done on frontend you cant do it in server it is a jaxreq
-    app.delete("/blogs/:id", (req, res) => {
-      const id = req.params.id;
-      Blog.findByIdAndDelete(id)
-        .then((result) => {
-          res.json({ redirect: "/blogs" });
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    });
-  });
-  console.log(id);
 });
 
 //404 page middleware  code will neve reach to the above handlers
