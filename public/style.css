@@ -4,3 +4,33 @@
   border: 0;
   font-family: "Roboto Condensed", sans-serif;
 }
+a {
+  text-decoration: none !important ;
+  color: black !important ;
+}
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.center-self {
+  align-self: center;
+}
+.center-ver {
+  display: flex;
+  align-items: center;
+}
+.center-hori {
+  display: flex;
+  justify-content: center;
+}
+.border-c {
+  border: solid 2px;
+  border-color: black;
+  border-radius: 50px;
+}
+.border-r {
+  border: solid 2px;
+  border-color: black;
+  border-radius: 10px;
+}
