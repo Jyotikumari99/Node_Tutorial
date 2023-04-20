@@ -1,7 +1,7 @@
 const express = require("express");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
-const { registerUser } = require("./controllers/createUserController");
+const { registerUser, loginUser } = require("./controllers/createUserController");
 const { result } = require("lodash");
 const blogRoutes = require("./routes/blogRoutes");
 //express app
@@ -52,6 +52,7 @@ app.get("/about", (req, res) => {
 app.get("/login", (req, res) => {
   res.render("blogs/login", { title: "Login" });
 });
+app.post("/login", loginUser);
 // Renders login page when requests comes from path /login
 app.get("/register", (req, res) => {
   res.render("blogs/register", { title: "Create Account" });

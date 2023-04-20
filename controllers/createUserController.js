@@ -10,7 +10,19 @@ const registerUser = (req, res) => {
       console.log(err);
     });
 };
-const loginUser = (req, res) => {};
+const loginUser = async (req, res) => {
+  try {
+    const { username, password } = req.body;
+    const user = await createUser.findOne({ username, password });
+    if (!user) {
+      return res.status(404).send("Incorrect Username or Password");
+    }
+    res.redirect("/blogs");
+  } catch (error) {
+    res.status(400).send("Something error occurred at backend");
+  }
+};
 module.exports = {
   registerUser,
+  loginUser,
 };
