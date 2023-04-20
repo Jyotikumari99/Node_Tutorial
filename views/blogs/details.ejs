@@ -3,13 +3,20 @@
   <%- include('../partials/head.ejs') %>
   <body>
     <%- include('../partials/nav.ejs') %>
-    <div class="details content">
-      <h2><%= blog.title %></h2>
-      <div class="content">
-        <p><%= blog.snippet %></p>
-        <p><%= blog.body %></p>
+    <div class="p-3" style="width: 100%">
+      <div class="center-ver m-auto" style="width: 50%">
+        <div class="fs-3 fw-bold me-auto m-2"><%= blog.title %></div>
+        <div>
+          <a href="/blogs"><button class="me-3 button-r">Home</button></a>
+          <a href="/blogs" class="delete" data-doc="<%= blog._id %>"> <img src="/trashcan.svg" alt="delete icon" /></a>
+        </div>
       </div>
-      <a href="" class="delete" data-doc="<%= blog._id %>"> <img src="/trashcan.svg" alt="delete icon" /></a>
+      <div class="m-auto" style="width: 50%">
+        <div class="fs-5 m-2"><%= blog.snippet %></div>
+        <div class="center">
+          <div class="fs-6 m-2" style="text-align: justify"><%= blog.body %></div>
+        </div>
+      </div>
     </div>
   </body>
   <%- include('../partials/footer.ejs') %>
@@ -21,9 +28,6 @@
         method: "DELETE",
       })
         .then((response) => response.json())
-        .then((data) => {
-          window.location.href = data.redirect;
-        })
         .catch((err) => {
           console.log(err);
         });
