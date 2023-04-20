@@ -19,7 +19,7 @@
       </div>
     </div>
     <div class="d-flex">
-      <div style="width: 75%">
+      <div style="width: 100%">
         <div class="center-ver justify-content-around" style="width: 100%">
           <div class="fs-5 fw-bold" style="width: 50%">Articles</div>
           <div class="input-group ms-5" style="width: 120px">
@@ -32,13 +32,10 @@
         </div>
         <div>
           <% if (blogs.length>0){ %> <% blogs.forEach(blog=>{%>
-          <div class="p-2 m-5 bg-blog-card" style="width: 90%">
+          <div class="p-2 m-auto mt-3 bg-blog-card" style="width: 90%">
             <a href="/blogs/<%=blog._id %>">
               <div class="center-ver">
-                <div class="center border-c me-2" style="width: 40px; aspect-ratio: 1/1">
-                  <i class="bi bi-person-circle fs-5"></i>
-                </div>
-                <div>Username of Blog Auther</div>
+                <div class="center fs-5"><i class="bi bi-person-circle fs-5 me-2"></i> <%= blog.name %></div>
               </div>
               <div>
                 <h4 class="m-1" style="width: 100%"><%= blog.title %></h4>
