@@ -6,7 +6,7 @@ const blog_index = (req, res) => {
   Blog.find()
     .sort({ createdAt: -1 }) //Sort Blogs by Last Added to First Added
     .then((result) => {
-      res.render("blogs/index", { title: "All Blogs", blogs: result });
+      res.render("blogs/index", { title: "Bloggers", blogs: result });
     })
     .catch((err) => {
       console.log(err);
@@ -15,13 +15,12 @@ const blog_index = (req, res) => {
 const blog_details = (req, res) => {
   const id = req.params.id;
   Blog.findById(id)
-  .then((result) => {
-    res.render("blogs/details", { blog: result, title: "blog details" })
-})
-      .catch((err) => {
-        res.status(404).render("404", { title: "404blog not found" });
-      });
-  
+    .then((result) => {
+      res.render("blogs/details", { blog: result, title: "blog details" });
+    })
+    .catch((err) => {
+      res.status(404).render("404", { title: "404blog not found" });
+    });
 };
 const blog_create_get = (req, res) => {
   res.render("blogs/create", { title: "Create a new blog" });

@@ -3,14 +3,14 @@
   <%- include('../partials/head.ejs') %>
   <body>
     <%- include('../partials/nav.ejs') %>
-    <div class="crateDiv">
+    <div class="create-blog content">
       <form action="/blogs" method="post">
         <label for="title">Blog title:</label>
-        <input type="text" id="title" name="title" required />
+        <input type="text" id="title" name="title" minlength="25" required />
         <label for="snippet">Blog snippet:</label>
-        <input type="text" id="snippet" name="snippet" required />
+        <input type="text" id="snippet" name="snippet" minlength="35" required />
         <label for="body">Blog body:</label>
-        <textarea id="body" rows="5" name="body"></textarea>
+        <textarea id="body" rows="5" minlength="10" name="body"></textarea>
         <button>Submit</button>
       </form>
     </div>
