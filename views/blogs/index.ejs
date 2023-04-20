@@ -3,6 +3,30 @@
   <%- include('../partials/head.ejs')%>
   <body>
     <%- include('../partials/nav.ejs')%>
+    <div class="center-ver mb-3" style="width: 100%; height: 40px">
+      <div class="search-container center" style="width: 50%">
+        <form action="">
+          <input type="text" placeholder="Search.." name="search" />
+          <button type="submit"><i class="bi bi-search"></i></button>
+        </form>
+      </div>
+      <div class="center-ver">
+        <div class="m-2">My Topics:</div>
+        <div class="bg-topics center m-2">Content Writing</div>
+        <div class="bg-topics center m-2">Development</div>
+        <div class="bg-topics center m-2">Education</div>
+        <div class="bg-topics center m-2">Ui/Ux</div>
+      </div>
+    </div>
+    <div class="center-ver justify-content-around" style="width: 100%">
+      <div class="fs-5 fw-bold" style="width: 50%">Articles</div>
+      <div class="input-group ms-5" style="width: 80px">
+        <select class="form-select" id="inputGroupSelect01">
+          <option value="1">All</option>
+          <option value="2">Date</option>
+        </select>
+      </div>
+    </div>
     <div class="blogs content">
       <h2>All blogs</h2>
 
