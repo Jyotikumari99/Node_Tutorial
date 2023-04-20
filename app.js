@@ -48,6 +48,14 @@ app.get("/", (req, res) => {
 app.get("/about", (req, res) => {
   res.render("about", { title: "About" });
 });
+// Renders login page when requests comes from path /login
+app.get("/login", (req, res) => {
+  res.render("blogs/login", { title: "Login" });
+});
+// Renders login page when requests comes from path /login
+app.get("/register", (req, res) => {
+  res.render("blogs/register", { title: "Create Account" });
+});
 //blog routes
 app.use("/blogs", blogRoutes);
 app.use((req, res) => {
