@@ -1,7 +1,7 @@
 const express = require("express");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
-
+const { registerUser } = require("./controllers/createUserController");
 const { result } = require("lodash");
 const blogRoutes = require("./routes/blogRoutes");
 //express app
@@ -58,6 +58,7 @@ app.get("/register", (req, res) => {
 });
 //blog routes
 app.use("/blogs", blogRoutes);
+app.post("/register", registerUser);
 app.use((req, res) => {
   res.status(404).render("404", { title: "404" });
 });
