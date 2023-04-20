@@ -1,7 +1,7 @@
 const express = require("express");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
-
+const { registerUser, loginUser } = require("./controllers/createUserController");
 const { result } = require("lodash");
 const blogRoutes = require("./routes/blogRoutes");
 //express app
@@ -48,8 +48,18 @@ app.get("/", (req, res) => {
 app.get("/about", (req, res) => {
   res.render("about", { title: "About" });
 });
+// Renders login page when requests comes from path /login
+app.get("/login", (req, res) => {
+  res.render("blogs/login", { title: "Login" });
+});
+app.post("/login", loginUser);
+// Renders login page when requests comes from path /login
+app.get("/register", (req, res) => {
+  res.render("blogs/register", { title: "Create Account" });
+});
 //blog routes
 app.use("/blogs", blogRoutes);
+app.post("/register", registerUser);
 app.use((req, res) => {
   res.status(404).render("404", { title: "404" });
 });

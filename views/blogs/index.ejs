@@ -18,30 +18,35 @@
         <div class="bg-topics center m-2">Ui/Ux</div>
       </div>
     </div>
-    <div class="center-ver justify-content-around" style="width: 100%">
-      <div class="fs-5 fw-bold" style="width: 50%">Articles</div>
-      <div class="input-group ms-5" style="width: 80px">
-        <select class="form-select" id="inputGroupSelect01">
-          <option value="1">All</option>
-          <option value="2">Date</option>
-        </select>
+    <div class="d-flex">
+      <div style="width: 100%">
+        <div class="center-ver justify-content-around" style="width: 100%">
+          <div class="fs-5 fw-bold" style="width: 50%">Articles</div>
+          <div class="input-group ms-5" style="width: 120px">
+            <select class="form-select" id="inputGroupSelect01">
+              <option value="1">All</option>
+              <option value="2">First Added</option>
+              <option value="3">Last Added</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <% if (blogs.length>0){ %> <% blogs.forEach(blog=>{%>
+          <div class="p-2 m-auto mt-3 bg-blog-card" style="width: 90%">
+            <a href="/blogs/<%=blog._id %>">
+              <div class="center-ver">
+                <div class="center fs-5"><i class="bi bi-person-circle fs-5 me-2"></i> <%= blog.name %></div>
+              </div>
+              <div>
+                <h4 class="m-1" style="width: 100%"><%= blog.title %></h4>
+              </div>
+            </a>
+          </div>
+          <% }) %> <%} else { %>
+          <h2>There are no blogs to display..........</h2>
+          <% }%>
+        </div>
       </div>
-    </div>
-    <div class="blogs content">
-      <h2>All blogs</h2>
-
-      <% if (blogs.length>0){ %>
-      <!--cycling through the blogs and fireing call back function for each blof it will firee a callback function  -->
-      <% blogs.forEach(blog=>{%>
-      <a class="single" href="/blogs/<%=blog._id %>">
-        <h3 class="title"><%= blog.title %></h3>
-        <p class="snippet"><%= blog.snippet %></p>
-      </a>
-      <% }) %> <%} else { %>
-      <p>There are no blogs to display..........</p>
-      <% }%>
-
-      <!-- closing of if block and ejs  -->
     </div>
     <%- include('../partials/footer.ejs')%>
   </body>

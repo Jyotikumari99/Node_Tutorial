@@ -1,21 +1,16 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const blogSchema = new Schema(
+const userSchema = new Schema(
   {
-    name: {
+    username: {
       type: String,
       required: true,
     },
-
-    title: {
+    password: {
       type: String,
       required: true,
     },
-    snippet: {
-      type: String,
-      required: true,
-    },
-    body: {
+    email: {
       type: String,
       required: true,
     },
@@ -23,5 +18,5 @@ const blogSchema = new Schema(
   { timestamps: true }
 );
 
-const Blog = mongoose.model("Blog", blogSchema);
-module.exports = Blog;
+const CreateUser = mongoose.model("CreateUser", userSchema);
+module.exports = CreateUser;
