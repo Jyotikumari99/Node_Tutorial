@@ -5,13 +5,19 @@
     <%- include('../partials/navLogReg.ejs')%>
     <div class="login-page">
       <div class="form">
-        <form class="login-form" action="/login" method="post">
-          <input type="text" placeholder="Username" name="username" />
-          <input type="password" placeholder="Password" name="password" />
+        <form class="login-form" method="post" action="/login">
+          <input id="name" type="text" placeholder="Username" name="username" />
+          <input id="pass" type="password" placeholder="Password" name="password" />
           <button>login</button>
           <p class="message">Not registered? <a href="/register">Create an account</a></p>
         </form>
       </div>
     </div>
   </body>
+  <script>
+    var username = document.getElementById("name");
+    document.querySelector("form.login-form").addEventListener("submit", function (e) {
+      localStorage.setItem("user", JSON.stringify({ username: username.value }));
+    });
+  </script>
 </html>

@@ -4,7 +4,7 @@ const registerUser = (req, res) => {
   user
     .save()
     .then(() => {
-      res.redirect("/blogs");
+      res.redirect("/login");
     })
     .catch((err) => {
       console.log(err);
@@ -20,6 +20,7 @@ const loginUser = async (req, res) => {
     res.redirect("/blogs");
   } catch (error) {
     res.status(400).send("Something error occurred at backend");
+    console.log(error);
   }
 };
 module.exports = {
